@@ -1,6 +1,6 @@
 What is the capital of France?|A) Paris|B) Rome|C) Berlin|D) Madrid|A
 What is the name of the new pope?|A) Pope Leo IX|B) Pope Benedict|C) Pope Patrick III|D) Pope Gunderson|A
-What is the capital of South Africa?|A) Madrid|B) Yaounde|C) Johannesburg|D) Cape Town|C 
+What is the capital of South Africa?|A) Madrid|B) Yaounde|C) Johannesburg|D) Cape Town|D
 Who is the CEO of OpenAI?|A) Patrick Swayzy|B) Sam Altman|C) Tim Cook|D) Sundai Pichai|B
 In what year did Apple introduce the M1?|A) 2021|B) 2020|C) 2019|D) 2022|B
 Who is the richest billionaire in Africa?|A) Elon Musk|B) Tony Elumelu|C) Aliko Dangote|D) Rebecca Enonchong|C

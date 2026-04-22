@@ -37,7 +37,7 @@ load_questions() {
         echo -e "----------------------------------\n"
 
     #Prompts user for answer: accepts ABCD only
-        read -p "Enter your answer (A/B/C/D): " user_answer
+        read -r -p "Enter your answer (A/B/C/D): " user_answer
         
     #Make answer case insensitive
         user_answer=${user_answer^^}
@@ -46,7 +46,7 @@ load_questions() {
 
         while [[  "$user_answer" != "A" &&  "$user_answer" != "B" && "$user_answer" != "C" && "$user_answer" != "D" ]]; do
             echo "Invalid response!: Try again"
-            read -p  "Enter your answer (A/B/C/D): " user_answer
+            read -r -p  "Enter your answer (A/B/C/D): " user_answer
             user_answer=${user_answer^^}
 
         done
@@ -125,8 +125,9 @@ if [[ "$mode" = "highscores" ]]; then
 elif [[ "$mode" = "practice" ]]; then
     echo -e "\n==============Welcome to Quiz Master Practice Mode===============\n"
     echo -e "\n---------------Practice till you are good at it\n"
-    read -p "Enter your name" user_name
+    read -p "Enter your name " user_name
      load_questions
+    echo -e "\nCompleted Practice Mode, exiting....\n"
     exit 0
 fi
     
