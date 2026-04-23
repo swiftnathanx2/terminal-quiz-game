@@ -5,7 +5,6 @@ CORRECT=0
 INCORRECT=0
 CURRENT_STREAK=0
 LONGEST_STREAK=0
-high_scores="highscores.txt"
 mode=$1
 
 
@@ -125,7 +124,7 @@ if [[ "$mode" = "highscores" ]]; then
 elif [[ "$mode" = "practice" ]]; then
     echo -e "\n==============Welcome to Quiz Master Practice Mode===============\n"
     echo -e "\n---------------Practice till you are good at it\n"
-    read -p "Enter your name " user_name
+    read -r -p "Enter your name " user_name
      load_questions
     echo -e "\nCompleted Practice Mode, exiting....\n"
     exit 0
@@ -146,7 +145,7 @@ clear
 #Username and welcome intro to game
 echo "==============================Welcome to Quiz Master==========================="
 echo -e "\n-------------Test your knowledge on tech, geography and more!!--------------\n"
-read -p "Enter your name: " user_name
+read -r -p "Enter your name: " user_name
 echo "Welcome $user_name! Have fun!" 
 read -p "Press enter to launch game!"
 echo -e "\nLOADING GAME===========================================\n"
