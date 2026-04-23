@@ -147,7 +147,7 @@ echo "==============================Welcome to Quiz Master======================
 echo -e "\n-------------Test your knowledge on tech, geography and more!!--------------\n"
 read -r -p "Enter your name: " user_name
 echo "Welcome $user_name! Have fun!" 
-read -p "Press enter to launch game!"
+read -r -p "Press enter to launch game!"
 echo -e "\nLOADING GAME===========================================\n"
 sleep 0.5
 
