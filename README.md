@@ -31,11 +31,11 @@ Bash
 
 ## 📷 Screenshots
 
-![Terminal Quiz Game Screenshot](/terminal-quiz/assets/images/terminal%20quiz%20game.png)
+![Terminal Quiz Game Screenshot](assets/images/terminal%20quiz%20game.png)
 
-![Practice mode Screenshot](/terminal-quiz/assets/images/terminal%20quiz%20practice%20mode.png)
+![Practice mode Screenshot](assets/images/terminal%20quiz%20practice%20mode.png)
 
-![Highscore system Screenshot](/terminal-quiz/assets/images/terminal%20quiz%20highscore.png)
+![Highscore system Screenshot](assets/images/terminal%20quiz%20highscore.png)
 
 ## ⚙ Installation & Setup
 
