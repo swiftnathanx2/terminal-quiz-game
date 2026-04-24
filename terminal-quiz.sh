@@ -8,23 +8,19 @@ LONGEST_STREAK=0
 mode=$1
 
 
-
-#loading all questions into array and shuffle order
 load_questions() {
 
     mapfile -t quiz_bank < "$file"
-    mapfile -t quiz_bank < <(printf "%s\n" "${quiz_bank[@]}" | shuf) #shuffling questions
+    mapfile -t quiz_bank < <(printf "%s\n" "${quiz_bank[@]}" | shuf) 
     
     for line in "${quiz_bank[@]}"; do
-    #Question counter (Game Stats Segment)
+    
         QUESTION_COUNT=$(( QUESTION_COUNT + 1 ))
 
-    #clear everything above and keep screen clean for questions
         clear
 
-        IFS='|' read -r question opt_a opt_b opt_c opt_d answer <<< "$line" #splitting each line and assigning to variables
+        IFS='|' read -r question opt_a opt_b opt_c opt_d answer <<< "$line" 
         
-        #Display the question number and the total number of questions
         printf "\n%s\n" " Question $QUESTION_COUNT of ${#quiz_bank[@]}: $question"
 
         #display answer options
@@ -35,13 +31,11 @@ load_questions() {
         echo "$opt_d"
         echo -e "----------------------------------\n"
 
-    #Prompts user for answer: accepts ABCD only
         read -r -p "Enter your answer (A/B/C/D): " user_answer
         
-    #Make answer case insensitive
+    
         user_answer=${user_answer^^}
 
-    #Re-prompts until user enters valid input (A/B/C/D)
 
         while [[  "$user_answer" != "A" &&  "$user_answer" != "B" && "$user_answer" != "C" && "$user_answer" != "D" ]]; do
             echo "Invalid response!: Try again"
@@ -50,20 +44,15 @@ load_questions() {
 
         done
         
-    #Checking if user answer is correct or incorrect
         if [[ "$user_answer" == "$answer" ]]; then
             echo -n "Correct! ($answer):"
-            
-            #nested if condition to ensure counters dont work in practice mode
+        
             if [[ "$mode" != "practice" ]]; then
 
-                    #correct answers increment by 
                     CORRECT=$((CORRECT + 1))
 
-                    #current streak increment by 1
                     ((CURRENT_STREAK++))
 
-                #longest streak logic
                 if [[ "$CURRENT_STREAK" -gt "$LONGEST_STREAK" ]]; then
                     LONGEST_STREAK=$CURRENT_STREAK
                 fi
@@ -71,18 +60,14 @@ load_questions() {
         else
             echo -n "Incorrect!.The correct answer is :($answer) "
 
-            #nested if condition to prevent counting and streaks in practice mode while keeping code intact
             if [[ "$mode" != "practice" ]]; then
                 
-                #Incorrect answers increment by 1
                 INCORRECT=$((INCORRECT + 1))
 
-                #current streak reset
                 ((CURRENT_STREAK=0))
             fi
         fi
         
-        #if condition to display the contents of the correct answer in practice mode
         if [[ "$mode" = "practice" ]]; then
                     
             case $answer in
@@ -105,7 +90,6 @@ load_questions() {
           
         fi
 
-    #prompting the user to continue thereby pausing the game for the user to see their response at the bottom of the screen
         read -r -p $'\nPress enter to continue.....'
 
             
@@ -113,7 +97,6 @@ load_questions() {
 
 }
 
-#conditional logic to load the high score system
 
 if [[ "$mode" = "highscores" ]]; then
     echo -e "==============HIGH SCORE SYSTEM==============\n"
@@ -130,8 +113,6 @@ elif [[ "$mode" = "practice" ]]; then
     exit 0
 fi
     
-
-#guard check: checking if the file exists and is not empty
     if [[ ! -f "$file" ]]; then
         echo "File is missing or does not exist"
         
@@ -142,7 +123,7 @@ fi
 
     fi
 clear
-#Username and welcome intro to game
+
 echo "==============================Welcome to Quiz Master==========================="
 echo -e "\n-------------Test your knowledge on tech, geography and more!!--------------\n"
 read -r -p "Enter your name: " user_name
@@ -154,14 +135,11 @@ sleep 0.5
 
 
 load_questions 
-#final score calculation
+
 score=$((CORRECT * 100 /QUESTION_COUNT))
 
-#High score section
 echo "$user_name|$score|$CORRECT/$QUESTION_COUNT|$(date +%Y-%m-%d)" >> highscores.txt
 
-
-#Game summary section
 
 echo "==========GAME SUMMARY========"
 echo "---------------------------------------"
